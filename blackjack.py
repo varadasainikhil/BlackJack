@@ -29,6 +29,13 @@ def calculateScore(list):
 		score += i
 	return score
 
+def checkScore(list):
+	finalScore = 0
+	while(calculateScore(list)<=16):
+		list.append(random.choice(cards))
+		finalScore =  calculateScore(list)
+	return finalScore
+	
 if(playGame == "y"):
 	pcard1 = random.choice(cards)
 	pcard2 = random.choice(cards)
@@ -52,14 +59,10 @@ if(playGame == "y"):
 		print(f"Your final cards are: {playerDeck}, current score: {playerScore}")
 		computerScore = calculateScore(computerDeck)
 		print(f"Computer's final cards are: {computerDeck}, computer score = {computerScore}")
-		while(computerScore<=16):
-			computerDeck.append(random.choice(cards))
-			computerScore = calculateScore(computerDeck)
+		computerScore = checkScore(computerDeck)
 			
 	else:
-		while(computerScore<=16):
-			computerDeck.append(random.choice(cards))
-			computerScore = calculateScore(computerDeck)
+		computerScore = checkScore(computerDeck)
 		print(f"Your final cards are: {playerDeck}, current score: {playerScore}")
 		computerScore = calculateScore(computerDeck)
 		print(f"Computer's final cards = {computerDeck}, computer score = {computerScore}")
